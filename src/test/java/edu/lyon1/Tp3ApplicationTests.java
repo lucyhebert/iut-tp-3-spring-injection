@@ -40,4 +40,10 @@ public class Tp3ApplicationTests {
         assertThat(hasConfiguration).isTrue();
     }
 
+    @Test
+    public void shouldContainLastNameBean() {
+        assertThat(applicationContext.getBean("nom").getClass()).isEqualTo(String.class);
+        assertThat((String) applicationContext.getBean("nom")).isEqualTo("Simpson");
+    }
+
 }
