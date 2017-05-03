@@ -46,4 +46,10 @@ public class Tp3ApplicationTests {
         assertThat((String) applicationContext.getBean("nom")).isEqualTo("Simpson");
     }
 
+    @Test
+    public void shouldContainFirstNameBean() {
+        assertThat(applicationContext.getBean("prenom").getClass()).isEqualTo(String.class);
+        assertThat((String) applicationContext.getBean("prenom")).isEqualTo("Homer");
+    }
+
 }
