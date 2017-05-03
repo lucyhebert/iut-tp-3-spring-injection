@@ -3,6 +3,7 @@ package edu.lyon1;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
@@ -60,16 +61,14 @@ public class Tp3ApplicationTests {
         assertThat(hasConfiguration).isTrue();
     }
 
-    @Test
-    public void shouldContainLastNameBean() {
-        assertThat(applicationContext.getBean("nom").getClass()).isEqualTo(String.class);
-        assertThat((String) applicationContext.getBean("nom")).isEqualTo("Simpson");
+    @Test(expected = NoSuchBeanDefinitionException.class)
+    public void shouldNotContainLastNameBean() {
+        applicationContext.getBean("nom");
     }
 
-    @Test
-    public void shouldContainFirstNameBean() {
-        assertThat(applicationContext.getBean("prenom").getClass()).isEqualTo(String.class);
-        assertThat((String) applicationContext.getBean("prenom")).isEqualTo("Homer");
+    @Test(expected = NoSuchBeanDefinitionException.class)
+    public void shouldNotContainFirstNameBean() {
+        applicationContext.getBean("prenom");
     }
 
     @Test
@@ -112,6 +111,14 @@ public class Tp3ApplicationTests {
         )
                 .andExpect(status().isOk())
                 .andExpect(content().string(Boolean.TRUE.toString()));
+    }
+
+    @Test
+    public void shouldContainPrenomProperty(){
+        String prenom = applicationContext.getEnvironment().getProperty("prenom");
+        assertThat(prenom).isNotNull();
+        String nom = applicationContext.getEnvironment().getProperty("nom");
+        assertThat(nom).isNotNull();
     }
 
 }
