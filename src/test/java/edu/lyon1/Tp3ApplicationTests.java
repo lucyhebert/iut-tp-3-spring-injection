@@ -5,6 +5,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -54,10 +55,10 @@ public class Tp3ApplicationTests {
     }
 
     @Test
-    public void shouldContainUserComponentBean() {
+    public void shouldContainUserBean() {
         assertThat(applicationContext.getBean("utilisateur").getClass().getName()).isEqualTo("edu.lyon1.Utilisateur");
         Map<String, Object> beansWithComponentAnnotation = applicationContext.getBeansWithAnnotation(Component.class);
-        assertThat(beansWithComponentAnnotation.keySet()).contains("utilisateur");
+        assertThat(beansWithComponentAnnotation.keySet()).doesNotContain("utilisateur");
         assertThat(applicationContext.getBean("utilisateur"))
                 .extracting("prenom")
                 .containsExactly("Homer");
