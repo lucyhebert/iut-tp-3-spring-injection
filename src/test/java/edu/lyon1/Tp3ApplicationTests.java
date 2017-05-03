@@ -1,26 +1,44 @@
 package edu.lyon1;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.context.WebApplicationContext;
 
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@WebAppConfiguration
 public class Tp3ApplicationTests {
 
     @Autowired
     private ApplicationContext applicationContext;
+
+    @Autowired
+    private WebApplicationContext wac;
+
+    private MockMvc mockMvc;
+
+    @Before
+    public void setup() {
+        this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
+    }
 
     @Test
     public void contextLoads() {
@@ -65,6 +83,35 @@ public class Tp3ApplicationTests {
         assertThat(applicationContext.getBean("utilisateur"))
                 .extracting("nom")
                 .containsExactly("Simpson");
+    }
+
+    @Test
+    public void userCheckShouldBeFalseWhenNoUser() throws Exception {
+        this.mockMvc.perform(get("/"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(Boolean.FALSE.toString()));
+    }
+
+    @Test
+    public void userCheckShouldBeFalseWhenWrongUser() throws Exception {
+        this.mockMvc.perform(
+                get("/")
+                        .param("prenom", "Michel")
+                        .param("nom", "Sardou")
+        )
+                .andExpect(status().isOk())
+                .andExpect(content().string(Boolean.FALSE.toString()));
+    }
+
+    @Test
+    public void userCheckShouldBeTrueWhenCorrectUser() throws Exception {
+        this.mockMvc.perform(
+                get("/")
+                        .param("prenom", "Homer")
+                        .param("nom", "Simpson")
+        )
+                .andExpect(status().isOk())
+                .andExpect(content().string(Boolean.TRUE.toString()));
     }
 
 }
