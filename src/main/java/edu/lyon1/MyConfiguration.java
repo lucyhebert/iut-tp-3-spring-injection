@@ -10,4 +10,9 @@ public class MyConfiguration {
   public String nom() {
     return "Simpson";
   }
+
+  @Bean
+  public String prenom() {
+    return "Homer";
+  }
 }
