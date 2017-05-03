@@ -1,5 +1,6 @@
 package edu.lyon1;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -7,17 +8,7 @@ import org.springframework.context.annotation.Configuration;
 public class MyConfiguration {
 
   @Bean
-  public String nom() {
-    return "Simpson";
-  }
-
-  @Bean
-  public String prenom() {
-    return "Homer";
-  }
-
-  @Bean
-  public Utilisateur utilisateur(String prenom, String nom) {
+  public Utilisateur utilisateur(@Value("${prenom}") String prenom, @Value("${nom}") String nom) {
     return new Utilisateur(prenom, nom);
   }
 }
