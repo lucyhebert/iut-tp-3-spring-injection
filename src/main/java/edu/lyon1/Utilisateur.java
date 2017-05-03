@@ -2,7 +2,6 @@ package edu.lyon1;
 
 import org.springframework.stereotype.Component;
 
-@Component
 public class Utilisateur {
     private final String prenom;
     private final String nom;

@@ -15,4 +15,9 @@ public class MyConfiguration {
   public String prenom() {
     return "Homer";
   }
+
+  @Bean
+  public Utilisateur utilisateur(String prenom, String nom) {
+    return new Utilisateur(prenom, nom);
+  }
 }
