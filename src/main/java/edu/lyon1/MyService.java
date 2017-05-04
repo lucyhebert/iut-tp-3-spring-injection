@@ -17,7 +17,7 @@ public class MyService {
     private Utilisateur utilisateur;
 
     @Autowired
-    private Collection<Utilisateur> utilisateurs;
+    private ListeUtilisateurs utilisateurs;
 
     public MyService(Utilisateur user) {
 
