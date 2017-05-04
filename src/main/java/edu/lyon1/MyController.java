@@ -15,12 +15,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class MyController {
 
     @Autowired
-    public Utilisateur user;
+    public MyService service;
+
+    public MyController(MyService service) {
+        this.service = service;
+    }
 
     @RequestMapping(value="/", method= RequestMethod.GET)
     @ResponseBody
-    public boolean checkUser(@RequestParam(name="prenom",defaultValue = "pouët") String prenom,
+    public boolean utilisateur(@RequestParam(name="prenom",defaultValue = "pouët") String prenom,
                              @RequestParam(name="nom", defaultValue = "pouët") String nom) {
-        return (user.prenom.equals(prenom) && user.nom.equals(nom));
+        return service.checkUser(new Utilisateur(prenom, nom));
     }
 }

@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
  */
 
 @Configuration
-public class Tp3Config {
+public class Config {
 
     @Bean(name="utilisateur")
     public Utilisateur utilisateur() {
