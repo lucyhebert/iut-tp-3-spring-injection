@@ -11,9 +11,11 @@ import java.util.Objects;
 public class Utilisateur {
 
     @Value("${nom}")
+    private
     String nom;
 
     @Value("${prenom}")
+    private
     String prenom;
 
     public Utilisateur() {

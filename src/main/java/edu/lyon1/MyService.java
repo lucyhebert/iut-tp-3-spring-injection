@@ -1,5 +1,6 @@
 package edu.lyon1;
 
+import com.sun.xml.internal.ws.developer.MemberSubmissionAddressing;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,5 +31,11 @@ public class MyService {
 
     public boolean checkUserInList(Utilisateur user) {
         return utilisateurs.contains(user);
+    }
+
+    public Validation checkUserInValidList(Utilisateur user) {
+        Validation validation = new Validation(user);
+        validation.checkUser();
+        return validation;
     }
 }
