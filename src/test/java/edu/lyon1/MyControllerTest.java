@@ -8,7 +8,7 @@ import org.junit.Test;
 
 public class MyControllerTest {
 
-  public static final Utilisateur UTILISATEUR = new Utilisateur("John", "Doe");
+  public static final Utilisateur UTILISATEUR = new Utilisateur("John", "Doe", "");
 
   @Test
   public void controllerShouldReturnTrueWhenServiceCheckIsTrue(){

@@ -13,29 +13,29 @@ public class MyServiceTest {
 
   @Test
   public void checkShouldBeFalseForUserWithDeferentFirstAndLastName(){
-    MyService service = new MyService(new Utilisateur(NOM, PRENOM));
-    boolean check = service.checkUser(new Utilisateur(AUTRE_NOM, AUTRE_PRENOM));
+    MyService service = new MyService(new Utilisateur(NOM, PRENOM, ""));
+    boolean check = service.checkUser(new Utilisateur(AUTRE_NOM, AUTRE_PRENOM, ""));
     assertThat(check).isFalse();
   }
 
   @Test
   public void checkShouldBeFalseForUserWithDeferentFirstName(){
-    MyService service = new MyService(new Utilisateur(NOM, PRENOM));
-    boolean check = service.checkUser(new Utilisateur(NOM, AUTRE_PRENOM));
+    MyService service = new MyService(new Utilisateur(NOM, PRENOM, ""));
+    boolean check = service.checkUser(new Utilisateur(NOM, AUTRE_PRENOM, ""));
     assertThat(check).isFalse();
   }
 
   @Test
   public void checkShouldBeFalseForUserWithDeferentLastName(){
-    MyService service = new MyService(new Utilisateur(NOM, PRENOM));
-    boolean check = service.checkUser(new Utilisateur(AUTRE_NOM, PRENOM));
+    MyService service = new MyService(new Utilisateur(NOM, PRENOM, ""));
+    boolean check = service.checkUser(new Utilisateur(AUTRE_NOM, PRENOM, ""));
     assertThat(check).isFalse();
   }
 
   @Test
   public void checkShouldBeTrueForUserWithSameFirstAndLastName(){
-    MyService service = new MyService(new Utilisateur(NOM, PRENOM));
-    boolean check = service.checkUser(new Utilisateur(AUTRE_NOM, PRENOM));
+    MyService service = new MyService(new Utilisateur(NOM, PRENOM, ""));
+    boolean check = service.checkUser(new Utilisateur(AUTRE_NOM, PRENOM, ""));
     assertThat(check).isFalse();
   }
 

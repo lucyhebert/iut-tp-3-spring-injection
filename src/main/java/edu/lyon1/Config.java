@@ -22,9 +22,9 @@ public class Config {
     public Collection<Utilisateur> listeUtilisateurs() {
         Collection<Utilisateur> users = new ArrayList<>();
 
-        users.add(new Utilisateur("Homer", "Simpson"));
-        users.add(new Utilisateur("John", "Doe"));
-        users.add(new Utilisateur("Blah", "Blah"));
+        users.add(new Utilisateur("Homer", "Simpson", ""));
+        users.add(new Utilisateur("John", "Doe", ""));
+        users.add(new Utilisateur("Blah", "Blah", ""));
 
         return users;
     }

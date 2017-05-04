@@ -23,8 +23,8 @@ public class MyController {
 
     @RequestMapping(value="/", method= RequestMethod.GET)
     @ResponseBody
-    public boolean utilisateur(@RequestParam(name="prenom",defaultValue = "pouët") String prenom,
+    public String utilisateur(@RequestParam(name="prenom",defaultValue = "pouët") String prenom,
                              @RequestParam(name="nom", defaultValue = "pouët") String nom) {
-        return service.checkUser(new Utilisateur(prenom, nom));
+        return service.checkUserInValidList(new Utilisateur(prenom, nom, "")).getMail();
     }
 }

@@ -11,12 +11,12 @@ import java.util.Objects;
 public class Utilisateur {
 
     @Value("${nom}")
-    private
-    String nom;
+    private String nom;
 
     @Value("${prenom}")
-    private
-    String prenom;
+    private String prenom;
+
+    private String mail;
 
     public Utilisateur() {
         this.nom = nom;
@@ -26,6 +26,20 @@ public class Utilisateur {
     public Utilisateur(String firstName, String name) {
         this.nom = name;
         this.prenom = firstName;
+    }
+
+    public Utilisateur(String firstName, String name, String mail) {
+        this.nom = name;
+        this.prenom = firstName;
+        this.mail = mail;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 
     @Override

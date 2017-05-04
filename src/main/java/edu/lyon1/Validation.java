@@ -15,9 +15,11 @@ public class Validation {
     private boolean status;
     private String message;
     private Utilisateur user;
+    private String mail;
 
     public Validation(Utilisateur user) {
         this.user = user;
+        this.mail = user.getMail();
     }
 
     public void setStatus(boolean status) {
@@ -34,6 +36,10 @@ public class Validation {
 
     public Utilisateur getUser() {
         return user;
+    }
+
+    public String getMail() {
+        return mail;
     }
 
     public void checkUser() {
