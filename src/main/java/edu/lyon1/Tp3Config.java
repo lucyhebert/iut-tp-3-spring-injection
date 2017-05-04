@@ -19,4 +19,9 @@ public class Tp3Config {
     public String prenom() {
         return "Homer";
     }
+
+    @Bean(name="utilisateur")
+    public Utilisateur utilisateur() {
+        return new Utilisateur();
+    }
 }
