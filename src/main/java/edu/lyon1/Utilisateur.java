@@ -1,6 +1,7 @@
 package edu.lyon1;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 
 /**
  * Created by p1614402 on 04/05/2017.
@@ -8,10 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class Utilisateur {
 
-    @Autowired
+    @Value("${nom}")
     String nom;
 
-    @Autowired
+    @Value("${prenom}")
     String prenom;
 
     public Utilisateur() {

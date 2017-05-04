@@ -10,16 +10,6 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class Tp3Config {
 
-    @Bean(name="nom")
-    public String nom() {
-        return "Simpson";
-    }
-
-    @Bean(name="prenom")
-    public String prenom() {
-        return "Homer";
-    }
-
     @Bean(name="utilisateur")
     public Utilisateur utilisateur() {
         return new Utilisateur();
