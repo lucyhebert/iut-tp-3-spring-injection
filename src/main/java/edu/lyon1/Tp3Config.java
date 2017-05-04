@@ -14,4 +14,9 @@ public class Tp3Config {
     public String nom() {
         return "Simpson";
     }
+
+    @Bean(name="prenom")
+    public String prenom() {
+        return "Homer";
+    }
 }
